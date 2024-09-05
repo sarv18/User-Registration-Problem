@@ -62,6 +62,21 @@ class UserRegistration:
             print(e)
             print("You need to write Country code follow by space and 10 digit number")
     
+    def password_rules(self):
+        
+        try:
+            self.password = input("Enter your password : ")
+            validation = re.match(r"[a-zA-Z0-9]{8,}$", self.password)
+            if not validation:
+                raise ValueError("Invalid Password")
+            else:
+                print("Password registered successfully..")
+
+        except ValueError as e:
+            print(e)
+            print("You need to enter minimum 8 characters")
+
+    
     def menu(self):
         
         print("Welcome to User Registration\nEnter any option given below:")
@@ -69,6 +84,7 @@ class UserRegistration:
         print("2. Enter last name ")
         print("3. Enter Email ")
         print("4. Enter Mobile Number ")
+        print("5. Enter Password ")
         user_choice=int(input("Enter your choice : "))
         return user_choice
 
@@ -88,10 +104,14 @@ class UserRegistration:
             case 4:
                 self.mobile_number()
                
+            case 5:
+                self.password_rules()
+               
             case _:
                 print("Invalid choice..")
                 
 def main():
+    
     user_registration_obj = UserRegistration()
     
     while True:
