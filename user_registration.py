@@ -5,6 +5,10 @@ class UserRegistration:
     def __init__(self):
         
         self.first_name = None
+        self.last_name = None
+        self.email = None
+        self.mobile_no = None
+        self.password = None
 
     def users_first_name(self):
         
