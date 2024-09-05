@@ -20,20 +20,38 @@ class UserRegistration:
             print(e)
             print("First name must start with a capital letter and have at least 3 characters")
     
+    def users_last_name(self):
+        
+        try:
+            self.last_name = input("Enter your last name: ")
+            validation = re.match(r"^[A-Z][a-zA-Z]{2,}$", self.last_name)
+            if not validation:
+                raise ValueError("Invalid First Name")
+            else:
+                print("Last Name registered successfully..")
+            
+        except ValueError as e:
+            print(e)
+            print("Last name must start with a capital letter and have at least 3 characters")
+    
     def menu(self):
         
         print("Welcome to User Registration\nEnter any option given below:")
         print("1. Enter first name : ")
+        print("2. Enter last name : ")
         user_choice=int(input("Enter your choice : "))
         return user_choice
-
-
 
     def selection(self, choice):
         
         match choice:
+            
             case 1:
                 self.users_first_name()
+            
+            case 2:
+                self.users_last_name()
+            
             case _:
                 print("Invalid choice..")
                 
