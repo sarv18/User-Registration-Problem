@@ -66,7 +66,7 @@ class UserRegistration:
         
         try:
             self.password = input("Enter your password : ")
-            validation= re.match(r"(?=.*[A-Z])(?=.*[0-9]){8,}", self.password)
+            validation= re.match(r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]{1}).{8,}$", self.password)
             if not validation:
                 raise ValueError("Invalid Password")
             else:
@@ -74,7 +74,7 @@ class UserRegistration:
 
         except ValueError as e:
             print(e)
-            print("You need to enter minimum 8 characters and atleast one upper case and atleast one digit.")
+            print("You need to enter minimum 8 characters and atleast one upper case and atleast one digit and exact one special character.")
 
     
     def menu(self):
