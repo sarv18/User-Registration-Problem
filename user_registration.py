@@ -34,11 +34,25 @@ class UserRegistration:
             print(e)
             print("Last name must start with a capital letter and have at least 3 characters")
     
+    def users_email(self):
+        try:
+            self.email = input("Enter your Email : ")
+            validation = re.match(r"^([a-z]+)\.([a-zA-Z0-9]+)@([a-z]+)\.([a-z]+)(\.[a-zA-Z0-9]+)?$", self.email)
+            if not validation:
+                raise ValueError("Invalid Email")
+            else:
+                print("Email registered successfully..")
+                
+        except ValueError as e:
+            print(e)
+            print("Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions.")
+    
     def menu(self):
         
         print("Welcome to User Registration\nEnter any option given below:")
         print("1. Enter first name : ")
         print("2. Enter last name : ")
+        print("3. Enter Email : ")
         user_choice=int(input("Enter your choice : "))
         return user_choice
 
@@ -52,6 +66,9 @@ class UserRegistration:
             case 2:
                 self.users_last_name()
             
+            case 3:
+                self.users_email()
+                        
             case _:
                 print("Invalid choice..")
                 
