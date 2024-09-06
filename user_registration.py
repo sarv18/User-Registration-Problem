@@ -10,75 +10,80 @@ class UserRegistration:
         self.mobile_no = None
         self.password = None
 
-    def users_first_name(self):
+    def users_first_name(self, first_name):
         
-        try:
-            self.first_name = input("Enter your first name: ")
-            validation = re.match(r"^[A-Z][a-zA-Z]{2,}$", self.first_name)
+        #try:
+            self.first_name = first_name
+            validation = re.match(r"^[A-Z][a-zA-Z]{2,}$", first_name)
             if not validation:
-                raise ValueError("Invalid First Name")
+                return False
             else:
                 print("First Name registered successfully..")
+                return True
             
-        except ValueError as e:
-            print(e)
-            print("First name must start with a capital letter and have at least 3 characters")
+        # except ValueError as e:
+        #     print(e)
+        #     print("First name must start with a capital letter and have at least 3 characters")
     
-    def users_last_name(self):
+    def users_last_name(self, last_name):
         
-        try:
-            self.last_name = input("Enter your last name: ")
+        #try:
+            self.last_name = last_name
             validation = re.match(r"^[A-Z][a-zA-Z]{2,}$", self.last_name)
             if not validation:
-                raise ValueError("Invalid First Name")
+                return False
             else:
                 print("Last Name registered successfully..")
+                return True
             
-        except ValueError as e:
-            print(e)
-            print("Last name must start with a capital letter and have at least 3 characters")
+        # except ValueError as e:
+        #     print(e)
+        #     print("Last name must start with a capital letter and have at least 3 characters")
     
-    def users_email(self):
+    def users_email(self, email):
         
-        try:
-            self.email = input("Enter your Email : ")
+        # try:
+            self.email = email
             validation = re.match(r"^([a-z]+)\.([a-zA-Z0-9]+)@([a-z]+)\.([a-z]+)(\.[a-zA-Z0-9]+)?$", self.email)
             if not validation:
-                raise ValueError("Invalid Email")
+                return False
             else:
                 print("Email registered successfully..")
+                return True
                 
-        except ValueError as e:
-            print(e)
-            print("Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions.")
+        # except ValueError as e:
+        #     print(e)
+        #     print("Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions.")
     
-    def mobile_number(self):
+    def mobile_number(self, mobile_no):
 
-        try:
-            self.mobile_no = input("Enter your Mobile Number : ")
+        # try:
+            self.mobile_no = mobile_no
             validation = re.match(r"\d{1,3}\s[0-9]{10}$", self.mobile_no)
             if not validation:
-                raise ValueError("Invalid Mobile Number")
+                return False
             else:
                 print("Mobile Number registered successfully..")
+                return True
                 
-        except ValueError as e:
-            print(e)
-            print("You need to write Country code follow by space and 10 digit number")
+        # except ValueError as e:
+        #     print(e)
+        #     print("You need to write Country code follow by space and 10 digit number")
     
-    def password_rules(self):
+    def password_rules(self, password):
         
-        try:
-            self.password = input("Enter your password : ")
+        # try:
+            self.password = password
             validation= re.match(r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]{1}).{8,}$", self.password)
             if not validation:
-                raise ValueError("Invalid Password")
+                return False
             else:
                 print("Password registered successfully..")
+                return True
 
-        except ValueError as e:
-            print(e)
-            print("You need to enter minimum 8 characters and atleast one upper case and atleast one digit and exact one special character.")
+        # except ValueError as e:
+        #     print(e)
+        #     print("You need to enter minimum 8 characters and atleast one upper case and atleast one digit and exact one special character.")
 
     
     def menu(self):
@@ -94,27 +99,31 @@ class UserRegistration:
 
     def selection(self, choice):
         
-        match choice:
+            if choice == 1:
+                first_name = input("Enter your first name: ")
+                self.users_first_name(first_name)
             
-            case 1:
-                self.users_first_name()
+            elif choice == 2:
+                last_name = input("Enter your last name: ")
+                self.users_last_name(last_name)
             
-            case 2:
-                self.users_last_name()
-            
-            case 3:
-                self.users_email()
+            elif choice == 3:
+                email = input("Enter your Email : ")
+                self.users_email(email)
                      
-            case 4:
-                self.mobile_number()
+            elif choice == 4:
+                mobile_no = input("Enter your Mobile Number : ")
+                self.mobile_number(mobile_no)
                
-            case 5:
-                self.password_rules()
+            elif choice ==5:
+                password = input("Enter your password : ")
+                self.password_rules(password)
                
-            case _:
+            else:
                 print("Invalid choice..")
                 
-def main():
+
+if __name__ == "__main__":
     
     user_registration_obj = UserRegistration()
     
@@ -126,6 +135,3 @@ def main():
         if exit == 'yes':
             print("User Registration exited, Good Bye..")
             break
-
-if __name__ == "__main__":
-    main()
