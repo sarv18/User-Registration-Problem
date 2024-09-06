@@ -40,6 +40,7 @@ def test_mobile_number(mobile, expected):
     result = UserRegistration().mobile_number(mobile)
     assert result == expected
 
+
 @pytest.mark.parametrize("password, expected", [
     ("Sarvesh@01", True),        # Valid case
     ("8766552550@aA", True),     # Valid case
