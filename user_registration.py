@@ -94,7 +94,7 @@ class UserRegistration:
         print("3. Enter Email ")
         print("4. Enter Mobile Number ")
         print("5. Enter Password ")
-        user_choice=int(input("Enter your choice : "))
+        user_choice = int(input("Enter your choice : "))
         return user_choice
 
     def selection(self, choice):
